@@ -1,2 +1,2 @@
 # openshift_1
-Cursod e Openshift Parte1
+Curso de Openshift Parte 1

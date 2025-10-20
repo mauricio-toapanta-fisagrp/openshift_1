@@ -1,9 +1,9 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: ejercicio-codigo-s2i
+  name: openshift-1-git
   label:
-    app: ejercicio-codigo-s2i
+    app: openshift-1-git
 spec:
   lookupPolicy:
     local: false
@@ -11,14 +11,14 @@ spec:
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: ejercicio-codigo-s2i
+  name: openshift-1-git
   label:
-    app: ejercicio-codigo-s2i
+    app: openshift-1-git
 spec:
   source:
     type: Git
     git:
-      uri: https://github.com/apbusinessit/ejercicioclase.git
+      uri: https://github.com/mauricio-toapanta-fisagrp/openshift_1.git
       ref: master
     contextDir: ''
   strategy:
@@ -28,4 +28,4 @@ spec:
   output:
     to: 
       kind: ImageStreamTag
-      name: "ejercicio-codigo-s2i:latest"
+      name: "openshift-1-git:latest"

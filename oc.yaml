@@ -15,6 +15,17 @@ spec:
     metadata:
       labels:
         app: mi-app
+      annotations:
+        image.openshift.io/triggers:  |
+          [
+            {
+              "from": {
+                "kind": "ImageStreamTag",
+                "name": "openshift-1-git:latest"
+              },
+              "fieldPath": "spec.template.spec.containers[?(@.name==\"contenedor-principal\")].image"
+            }
+          ]
     spec:
       containers:
         - name: contenedor-principal

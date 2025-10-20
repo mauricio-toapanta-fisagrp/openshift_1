@@ -33,4 +33,4 @@ spec:
       name: "openshift-1-git:latest"
   postCommit:
     script: |
-      oc rollout restart deployment/mi-deployment -n mauricio-toapanta-dev || true
+      oc rollout restart deployment/mi-deployment-m -n mauricio-toapanta-dev || true

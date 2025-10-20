@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: contenedor-principal
-          image: forcet22/hola-node:1.0.0  # <-- Reemplaza con la imagen que quieras usar
+          image: mauriciotoapanta/hola-mundo-clase-86:2  # <-- Reemplaza con la imagen que quieras usar
           ports:
             - containerPort: 3000
           envFrom:
@@ -65,3 +65,23 @@ metadata:
 type: Opaque
 data:
   PASSWORD: aG9sYQ==
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: mi-hpa
+  namespace: mauricio
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: deployment
+    name: mi-deployment
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 100

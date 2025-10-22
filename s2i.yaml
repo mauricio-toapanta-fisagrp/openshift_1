@@ -21,7 +21,7 @@ spec:
     type: Git
     git:
       uri: https://github.com/mauricio-toapanta-fisagrp/openshift_1.git
-      ref: master
+      ref: main
     contextDir: ''
   strategy:
     type: Source

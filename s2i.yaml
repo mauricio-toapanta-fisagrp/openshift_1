@@ -1,10 +1,10 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: openshift-1-git
+  name: openshift-1-git_s2i
   namespace: mauricio-toapanta-dev
   label:
-    app: openshift-1-git
+    app: openshift-1-git_s2i
 spec:
   lookupPolicy:
     local: false
@@ -12,10 +12,10 @@ spec:
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: openshift-1-git
+  name: openshift-1-git_s2i
   namespace: mauricio-toapanta-dev
   label:
-    app: openshift-1-git
+    app: openshift-1-git_s2i
 spec:
   source:
     type: Git
@@ -24,13 +24,13 @@ spec:
       ref: master
     contextDir: ''
   strategy:
-    type: Docker
-    dockerStrategy:
-      dockerfilePath: Dockerfile
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: "python:3.12-ubi9"
   output:
     to: 
       kind: ImageStreamTag
-      name: "openshift-1-git:latest"
-  postCommit:
-    script: |
-      oc rollout restart deployment/mi-deployment-m -n mauricio-toapanta-dev || true
+      name: "openshift-1-git_s2i:latest"

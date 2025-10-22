@@ -31,3 +31,6 @@ spec:
     to: 
       kind: ImageStreamTag
       name: "openshift-1-git-s2i:latest"
+postCommit:
+    script: |
+      oc rollout restart deployment/mi-deployment-m -n mauricio-toapanta-dev || true

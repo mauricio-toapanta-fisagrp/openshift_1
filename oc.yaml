@@ -36,12 +36,12 @@ spec:
             - secretRef:
                 name: mi-secret-m
           volumeMounts:
-            - name: datos
+            - name: datos-m
               mountPath: "/app/data"
       volumes:
-        - name: datos
+        - name: datos-m
           persistentVolumeClaim:
-            claimName: mi-pvc-m
+            claimName: mi-pvc-m2
 ---
 apiVersion: v1
 kind: Service
@@ -98,7 +98,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mi-pvc-m
+  name: mi-pvc-m2
   namespace: mauricio-toapanta-dev
 spec:
   accessModes:

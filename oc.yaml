@@ -35,6 +35,13 @@ spec:
                 name: mi-configmap-m
             - secretRef:
                 name: mi-secret-m
+          volumeMounts:
+            - name: datos
+              mountPath: "/app/data"
+      volumes:
+        - name: datos
+          persistentVolumeClaim:
+            claimName: mi-pvc
 ---
 apiVersion: v1
 kind: Service

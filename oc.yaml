@@ -41,7 +41,7 @@ spec:
       volumes:
         - name: datos
           persistentVolumeClaim:
-            claimName: mi-pvc
+            claimName: mi-pvc-m
 ---
 apiVersion: v1
 kind: Service
@@ -98,7 +98,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mi-pvc
+  name: mi-pvc-m
   namespace: mauricio-toapanta-dev
 spec:
   accessModes:
